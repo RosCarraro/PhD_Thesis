@@ -1,0 +1,257 @@
+\documentclass[11pt,twoside,openright,usenatbib]{report}
+
+%% Supress most of the overful and underful warnings
+\sloppy
+\addtolength{\headheight}{2pt}
+
+%% Set line spacing
+\renewcommand{\baselinestretch}{1.35}
+
+%% Page layout
+\oddsidemargin 1.0cm
+\evensidemargin 0.0cm
+\textwidth 14.5cm
+\textheight 22.5cm
+\topmargin -0.4cm
+
+%% New commands can be defined here
+\newcommand{\pare}[1]{\left( #1 \right)}
+\newcommand{\corc}[1]{\left[ #1 \right]}
+\newcommand{\llav}[1]{\left \{ #1 \right \}}
+\newcommand{\modu}[1]{\left | #1 \right |}
+\newcommand{\tria}[1]{\left < #1 \right >}
+
+%For footnotes with different symbols
+% 0 unsigned
+% 1 *
+% 2 dagger 
+% 3 double dagger
+% 4 manual
+\long\def\symbolfootnote[#1]#2{\begingroup%
+  \def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
+
+
+%% You can define the packages used here
+\usepackage{natbib}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage{psfrag}
+\usepackage{aas_macros}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{supertabular}
+\usepackage{subfigure}
+\usepackage{textcomp}
+\usepackage{mathpazo} 		%% Use font Palatino (incl. maths)
+\usepackage[subfigure]{tocloft}	%% tocloft to edit table of contents
+\usepackage{rotating}
+\usepackage{hyperref}
+% my packages
+\newcommand*\sun{\ensuremath{\odot}}
+\newcommand\T{\rule{0pt}{2.6ex}}       % Top strut
+\newcommand\B{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut
+
+%% Set the section headings to a sans-serif font
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
+
+%% Aesthetic spacing redefines that look nicer to me than the defaults.
+\setlength{\cftbeforechapskip}{2ex}
+\setlength{\cftbeforesecskip}{0.5ex}
+
+%% Use sans serif for both Content title and Chapter entries
+\renewcommand{\contentsname}{\sffamily{\textbf{Contents}}} 
+\renewcommand{\cftchapfont}{\large \bf \sffamily}
+
+%% Define headers and footers for normal page...
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhf{} % clear all fields
+\fancyhead[LE]{\it \sffamily  \leftmark}
+\fancyhead[RO]{\it \sffamily  \rightmark}
+\fancyfoot[RO,LE]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%% and the first page of chapter, etc.
+\fancypagestyle{plain} {
+  \fancyhf{} % clear all fields
+  \fancyfoot[RO,LE]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+ }
+
+%% Redefine parameters for section headings
+\makeatletter
+\renewcommand{\section}{\@startsection
+  {section}                          % the name
+  {1}                                % the level
+  {\z@}                              % the indent
+  {-3.75ex \@plus -1ex \@minus -.2ex} % the beforeskip
+  {1.5ex}                            % the afterskip
+  {\bf \LARGE \sffamily}  	     % the style: sans serif
+}
+\renewcommand\subsection{\@startsection
+  {subsection}
+  {2}
+  {\z@}
+  {-3.5ex\@plus -1ex \@minus -.2ex}
+  {1.3ex}
+  {\bf \Large \sffamily}
+}
+\renewcommand\subsubsection{\@startsection
+  {subsubsection}
+  {3}
+  {\z@}
+  {-3.5ex\@plus -1ex \@minus -.2ex}
+  {1.0ex}
+  {\bf \large \sffamily}
+} \makeatother
+
+%% Snazzy chapter headings:
+%% move the headings to the right hand side and do "chapter x" in small capitals
+\makeatletter
+\def\@makechapterhead#1{
+  \vspace*{70\p@}
+  {\parindent \z@ \raggedright \normalfont
+    \flushright \Huge \sc \@chapapp\space  \sc \thechapter
+
+    \par\nobreak
+         \vskip 60\p@
+
+%%Choose the sans serif style for the actual chapter title
+     \Huge \normalfont \bf \sffamily   
+     #1\par\nobreak
+    \vskip 40\p@
+  }
+}
+\makeatother
+
+%% Redefine the style for captions
+\makeatletter
+\long\def\@makecaption#1#2{%
+   \vskip 10\p@
+%% Change the font again to sans serif
+   \setbox\@tempboxa\hbox{\small{\bf \sffamily #1:} #2}%
+   \ifdim \wd\@tempboxa >\hsize
+    {\small{\bf #1:} #2\par}
+     \else
+       \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+   \fi}
+\makeatother
+
+%% Provide macro to allow clear page before a chapter
+\newcommand{\clearchapterpage}{\newpage{\thispagestyle{empty}\cleardoublepage}}
+
+%%Useful command if you only want to look at one chapter - comment in when needed
+%\includeonly{Test}
+
+% Unità di misura by Trita
+\newcommand{\um}[1]{\,\mathrm{#1}}
+\newcommand{\ump}[2]{\,\mathrm{#1}^{#2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Here the actual thesis starts %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\input{00-titlepage}
+\clearchapterpage
+
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
+%% Choose larger font for introductory pages
+\fontsize{11}{13}\selectfont
+
+\include{01-dedication}
+\clearchapterpage
+
+\include{02-declaration}
+\clearchapterpage
+
+\include{03-acknowledgements}
+\clearchapterpage
+
+\include{04-abstract}
+\clearchapterpage
+
+%% Back to normal size for the rest of the document
+\normalsize
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%THESIS PLANNED FOR 26 OCBOBER 2008
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\clearchapterpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%###### Introduction #######
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+\include{05-Intro}
+\clearchapterpage
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+%
+%%###### CHAPTER 2 #######
+%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\include{06-chapter-2}
+\clearchapterpage
+%%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+%
+%%###### CHAPTER 3 #######
+%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\include{07-chapter-3}
+\clearchapterpage
+%%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+%
+%%###### CHAPTER 4 #######
+%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\include{08-chapter4}
+\clearchapterpage
+%%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+%
+%%###### CHAPTER 5 #######
+%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\include{09-chapter-5}
+\clearchapterpage
+%%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+%
+%%###### Conclusions #######
+%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\include{10-conclusions}
+\clearchapterpage
+%%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+\appendix
+
+%###### APPENDIX 1 #######
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+%====   FINITO ====
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\include{11-appendix-1}
+\clearchapterpage
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+%
+% Add as many appendixes as you want
+%
+%%###### APPENDIX 2 #######
+%%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+%%====   FINITO ====
+%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%\include{FCCAp2}
+%\clearchapterpage
+%%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+
+\bibliographystyle{mnras}
+\bibliography{12-references}
+
+
+\end{document}
