@@ -1,4 +1,4 @@
-\chapter{An observational point of view}
+\chapter{An observational point of view} \label{ch:observations}
 
 %\begin{center}
 %  {\it ``If could add an introductionary text here.''}
@@ -104,7 +104,7 @@ We used SFR$_{IR}^{SB}$, M$_*$ , and $z$ from the \citet{2013MNRAS.432...23G} ca
 We matched the starburst sample with the catalog of star-forming and passive galaxies that was previously color-color selected from \citet{2016ApJS..224...24L}, using a 3.5'' association radius in order to exclude the starburst galaxies from our star-forming and quiescent selection. For a distance greater than 2'' we only accepted matches that have a $\Delta z = |\, z_{\rm Gruppioni} - z_{\rm Laigle} \,|<0.3$, allowing us to include seven more starburst galaxies in our sample.
 We compared the stellar masses of the starburst sample (derived from MAGPHYS) with their stellar masses from \citet{2016ApJS..224...24L} (derived from \emph{Le Phare}) in each of the redshift bins and found that they lie along the 1:1 relation with increasing scatter with redshift (RMS ranging from 0.18 dex at low z to 0.35 dex at high-z), but with no offset (the median of the difference of the masses is about $10^{-2}$). From the cross-match we find that 965 color-selected star-forming galaxies are IR-classified as starbursts (this is expected because the NUV$ - r / r - J$ diagram does not have a starburst area) and 28 color-selected quiescents are IR starbursts. We moved 1494 galaxies that are $24\mu m$ MIPS/\textit{Spitzer} detected from our quiescent selection to the star-forming galaxy sample because the IR emission indicates that a certain amount of optically hidden star formation is ongoing. For the X-ray detected star-forming and quiescent galaxies we used the redshift included in \citet{2016ApJ...817...34M}. We have a final number of 83,904 star-forming, 12,839 quiescent, and 1,003 starburst galaxies.
 
-We further divided the sample into four redshift bins: 0.1<z<0.65, 0.65<z<1.3, 1.3<z<2.25, and 2.25<z<3.5.
+We further divided the sample into four redshift bins: $0.1<z<0.65$, $0.65<z<1.3$, $1.3<z<2.25$, and $2.25<z<3.5$.
 
 Every redshift bin was chosen with the purpose of including a sufficient number of galaxies (see Table~\ref{table:n_gal}), and then the galaxy sample of each redshift bin was divided into mass bins. Our final sample is shown in Fig.~\ref{fig:M_vs_z} together with the mass-completeness thresholds from \citet{2016ApJS..224...24L} for star-forming and quiescent galaxies and the limits of our stellar mass and redshift bins. 
 
@@ -189,7 +189,7 @@ $2.25<z<3.50$ & $ 1.00 \pm 0.05 $ & $ -9.6 \pm 0.5$ \\
 \end{table}
 %-----------------------------------------------------------------
 
-\subsection{X-ray luminosity and black hole accretion rate estimate}
+\subsection{X-ray luminosity and black hole accretion rate estimate} \label{subsec:LX_BHAR}
 %\textit{A Luminosity estimate} \\
 We converted the distribution of average rest-frame fluxes F$_\text{ave}$  %$_i$ 
 (Equation~\ref{eq:F_ave}) to average luminosities L$_\text{ave}$ %$_i$ 
@@ -246,8 +246,7 @@ $c$ is the speed of light in vacuum, and $\epsilon$ is the efficiency by which m
 \subsection{Star formation rates: FIR stacking and UV SED fitting} \label{ssec:SFR}
  For star-forming and quiescent galaxies, we estimated the SFR as the sum of the IR and far-UV-observed contributions (SFR$_{\rm IR + UV}$), while for starburst galaxies, we only considered the SFR$_{\rm IR}$. The SFR$_{\rm IR}$ was derived through the empirical calibration of \citet[][Eq.~4]{1998ARA&A..36..189K} from the total IR luminosity (L$_{\rm IR}$). The SFR$_{\rm UV}$ (not corrected for extinction) was inferred, following the prescription of \citet[][Eq.1]{1998ARA&A..36..189K}, from the rest-frame luminosity at 1600~\AA~ ($L_{1600\text{\AA}}$). The two SFRs were then combined as discussed by \citet{2013ApJ...762..125N}, and they were finally converted into the \citet{2003PASP..115..763C} IMF as in \citet{2008A&A...482...21C} by dividing by a factor of 1.7,
 \begin{multline}   \label{eq:SFR_tot}
-\text{SFR}_{\rm IR + UV}[{\rm M}_\odot \; yr^{-1}]= \text{SFR}_{\rm UV} + \text{SFR}_{\rm IR} = \\
-=(2.86  \;{\rm L}_{1600\text{\AA}}+1.7 \; {\rm L}_{\rm IR})\times \frac{10^{-10}}{1.7} \; [{\rm L}_\odot].
+\text{SFR}_{\rm IR + UV}[{\rm M}_\odot \; yr^{-1}]= \text{SFR}_{\rm UV} + \text{SFR}_{\rm IR} = (2.86  \;{\rm L}_{1600\text{\AA}}+1.7 \; {\rm L}_{\rm IR})\times \frac{10^{-10}}{1.7} \; [{\rm L}_\odot].
 \end{multline}
  
  In order to obtain the SFR$_{\rm IR + UV}$ for star-forming and quiescent galaxies, we performed bootstrapping, in which we selected a subsample of galaxies in a M$_*$ and $z$ bin at each iteration and estimated their L$_{\rm IR}$ and L$_{1600\text{\AA}}$. We then combined the median of each luminosity through Eq.~\ref{eq:SFR_tot} and thus derived the SFR$_{\rm IR + UV}$ distribution.  L$_{\rm IR}$ was obtained by stacking $160~\mu m$ PACS/\textit{Herschel} maps as in \citet{2014MNRAS.443...19R}. In our procedure we accounted for detections and nondetections to obtain the final median stacked fluxes that we then converted into bolometric luminosities by adopting an average $k$-correction \citep{2001ApJ...556..562C}. Because the $L_{1600\text{\AA}}$ luminosity is not included in \citet{2016ApJS..224...24L}, we derived it in the following way. For each source in the sample, we reconstructed the galaxy SED using {\it Hyperzmass}, which is a modified version of the {\it Hyperz} software \citep{2000A&A...363..476B, 2010A&A...524A..76B} and is suitable for computing the stellar mass when the photometric redshift is known. We adopted the \citet{2003MNRAS.344.1000B} stellar population models, with exponentially declining SFH, that is, SFR~$\propto e^{t/\tau}$), with $\tau$=0.1, 0.3, 1, 2, 3, 5, 10, 15, 30,  $\infty$=constant SFR). The $L_{1600\text{\AA}}$ were extracted directly from the {\it Hyperzmass} best-fit templates. 

@@ -20,7 +20,7 @@
 \newcommand{\llav}[1]{\left \{ #1 \right \}}
 \newcommand{\modu}[1]{\left | #1 \right |}
 \newcommand{\tria}[1]{\left < #1 \right >}
-\newcommand{\kalfa}{Fe $\rm K\alpha$}
+\newcommand{\kalfa}{Fe K$\alpha$}
 
 %For footnotes with different symbols
 % 0 unsigned
@@ -53,7 +53,12 @@
 \newcommand*\sun{\ensuremath{\odot}}
 \newcommand\T{\rule{0pt}{2.6ex}}       % Top strut
 \newcommand\B{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut
-\DeclareMathOperator{\sinc}{sinc} % sinc function
+\DeclareMathOperator{\sinc}{sinc} % sinc functionc
+\usepackage{booktabs} % for pandas tables
+\usepackage{longtable}
+\setlength{\LTcapwidth}{\textwidth}
+\usepackage{dcolumn}
+\newcolumntype{L}{D{.}{.}{2,3}}
 
 %% Set the section headings to a sans-serif font
 \usepackage{sectsty}
@@ -149,12 +154,19 @@
 
 %%Useful command if you only want to look at one chapter - comment in when needed
 %\includeonly{Test}
+  
+% cite aliases - Gonzalez-Martin&Vaughan12
+\defcitealias{2012A&A...544A..80G}{GM\&V12} 
+%\newcommand{\GMV12}{\citetalias{2012A&A...544A..80G}}
 
 % Unità di misura by Trita
 \newcommand{\um}[1]{\,\mathrm{#1}}
 \newcommand{\ump}[2]{\,\mathrm{#1}^{#2}}
 
-
+% two lined cells in table
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Here the actual thesis starts %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -214,8 +226,8 @@
 %
 %%###### CHAPTER 4 #######
 %%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-\include{08-chapter4}
-\clearchapterpage
+%\include{08-chapter4}
+%\clearchapterpage
 %%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 %
 %%###### CHAPTER 5 #######
@@ -247,13 +259,13 @@
 %%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 %%====   FINITO ====
 %%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%\include{FCCAp2}
-%\clearchapterpage
+\include{12-appendix-2}
+\clearchapterpage
 %%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 
 
 \bibliographystyle{mnras}
-\bibliography{12-references}
+\bibliography{13-references}
 
 
 \end{document}
